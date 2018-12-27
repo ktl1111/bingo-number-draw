@@ -1,6 +1,6 @@
 var app = angular.module('bingo_web', []);
 
-app.controller('controllerMain', function($scope) {
+app.controller('controllerMain', function($scope, $sce) {
   // Constants
   $scope.GRID_ELEMENTS = {
     LETTERS: ['B', 'I', 'N', 'G', 'O'],
@@ -8,6 +8,8 @@ app.controller('controllerMain', function($scope) {
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
+  $scope.LABEL_BINGO = 'B  I  N  G  O';
+
 
   $scope.roulette = {
 
@@ -40,7 +42,7 @@ app.controller('controllerMain', function($scope) {
     orderingMagicNumbers: Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS)).map(function (val, index) { return index; }),
     info: {
       order:   '',      
-      reading: 'B  I  N  G  O'
+      reading: $scope.LABEL_BINGO
     },
 
     // Methods
@@ -88,7 +90,7 @@ app.controller('controllerMain', function($scope) {
         this.orderingMagicNumbers = Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS)).map(function (val, index) { return index; });
         this.info.magic = '';
         this.info.order = '';
-        this.info.reading = 'B  I  N  G  O';
+        this.info.reading = $scope.LABEL_BINGO;
       } // if confirm()
     },
     swapBalls: function(a, b) {
@@ -145,6 +147,27 @@ app.controller('controllerMain', function($scope) {
       this.displayBallInfo(this.ordering[this.indexCurrentBall], true, true);
     }
   };
+
+
+  // Pre-load filled ball images
+  $scope.HTML_PRELOAD_IMAGES = Array.apply(null, Array($scope.roulette.balls))
+    .map(function (ball) {
+      return '<img src="images/' + '1' + ball.suffixFilename + '" width="1" height="1" alt="" />';
+    }).join('');
+
+
+  $scope.renderHtml = function(htmlCode)
+  {
+    // Check if the string is not empty
+    if ((htmlCode) && (htmlCode.length > 0))
+    {
+      return $sce.trustAsHtml(htmlCode);
+    } // if htmlCode
+
+      // Return a non-breaking space so that the div still contains some text to pad
+      return '&#160;';
+    }; // renderHtml()
+  
 }); // app.controller - controller
 
 
