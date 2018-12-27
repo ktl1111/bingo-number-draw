@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script src="sources/angular.min.js"></script>
+    <title>BINGO Web!</title>
+  </head>
+  <body ng-app="bingo_web" ng-controller="controllerMain">
+    <table style="width: 100%">
+      <tr>
+        <td style="width: 25%; text-align: left" ng-bind="roulette.info.magic"></td>
+        <td style="width: 50%; text-align: center; font-weight: bold" ng-bind="roulette.info.reading"></td>        
+        <td style="width: 25%; text-align: right" ng-bind="roulette.info.order"></td>        
+      </tr>
+    </table>
+    <table style="width: 100%; text-align: center">
+      <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
+        <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
+          ng-style="{ background: ((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'yellow' : 'none') }">
+          <img ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].suffixFilename }}"
+            ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, false, false)"></img>
+        </td>
+      </tr>
+    </table>
+
+    <!--    <div ng-bind="roulette.ordering | json"></div> -->
+
+    <table style="width: 100%">
+      <tr>
+        <td style="width: 25%; text-align: left">
+          <button type="button"
+            ng-click="roulette.drawMagic()"
+            ng-disabled="(roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1))"
+            ng-hide="((roulette.indexCurrentBall > -1) && (!roulette.balls[roulette.ordering[roulette.indexCurrentBall]].isMagic))">
+            Magic 
+          </button>
+        </td>
+        <td style="width: 50%; text-align: center; font-weight: bold">
+          <button type="button"
+            ng-click="roulette.drawBall()"
+            ng-disabled="(roulette.indexCurrentBall >= (NUMBER_BALLS - 1))">
+            Draw
+          </button>
+        </td>        
+        <td style="width: 25%; text-align: right">
+          <button type="button"
+            ng-click="roulette.reset()"
+            ng-disabled="(roulette.indexCurrentBall < 0)">
+            Reset
+          </button>
+        </td>        
+      </tr>
+    </table>
+
+    <script src="scripts/bingo_scripts.js"></script>
+  </body>
+</html>
