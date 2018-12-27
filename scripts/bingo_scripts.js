@@ -150,9 +150,9 @@ app.controller('controllerMain', function($scope, $sce) {
 
 
   // Pre-load filled ball images
-  $scope.HTML_PRELOAD_IMAGES = Array.apply(null, Array($scope.roulette.balls))
-    .map(function (ball) {
-      return '<img src="images/' + '1' + ball.suffixFilename + '" width="1" height="1" alt="" />';
+  $scope.HTML_PRELOAD_IMAGES = Array.apply(null, Array($scope.NUMBER_BALLS))
+    .map(function (ball, index) {
+      return '<img src="images/1_' + padLeft(index + 1, 2).toString() + '.png" alt="" />';
     }).join('');
 
 
