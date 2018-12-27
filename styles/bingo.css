@@ -10,3 +10,13 @@
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
+
+/* For image pre-loading */
+div#preloaded-images {
+   position: absolute;
+   overflow: hidden;
+   left: -9999px; 
+   top: -9999px;
+   height: 1px;
+   width: 1px;
+}
