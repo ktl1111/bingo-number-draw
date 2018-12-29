@@ -15,7 +15,8 @@ app.controller('controllerMain', function($scope, $sce, $window) {
   $scope.ACTIONS = {
     RESET: 0,
     DRAW:  1,
-    MAGIC: 2
+    MAGIC: 2,
+    INFO:  3
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
@@ -58,38 +59,48 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     },
 
     // Methods
-    displayBallInfo: function(indexBall, isFromDraw, isFromMagic) {
-      this.info.action = isFromDraw + isFromMagic;
-      // Check if from Magic button
-      if (isFromMagic)
-      {
-        this.info.magic = 'Magic: '
-          + this.magicNumbers
-            .filter(function (magic) { return magic.isDrawn; })
-            .map(function (magic) { return magic.number; })
-            .join(', ');
-        this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
-      } 
-      else if (isFromDraw)
-      {
-        this.info.reading = this.balls[indexBall].reading;
-      }
-      else
-      {
-        return;
-      } // isFromMagic
 
-      this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
-        ? ((this.balls[indexBall].isDrawn)
-          ? 'Ball ' + ((isFromDraw)
-            ? (this.indexCurrentBall + 1).toString()
-            : (this.ordering.indexOf(indexBall) + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
-          )
-          : 'Not yet drawn'
-        )
-        : 'Last Ball'
-      );
-    },
+    displayBallInfo: function(indexBall, action) {
+      this.info.action = action;
+      
+      // Determine handling from action
+      switch (action)
+      {
+        case $scope.ACTIONS.MAGIC:
+          this.info.magic = 'Magic: '
+            + this.magicNumbers
+              .filter(function (magic) { return (magic.isDrawn); })
+              .map(function (magic) { return magic.number; })
+                .join(', ');
+          this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
+          this.info.order = '';
+          break;
+        case $scope.ACTIONS.DRAW:
+          this.info.reading = this.balls[indexBall].reading;
+          this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
+            ? ((this.balls[indexBall].isDrawn)
+              ? 'Ball ' + (this.indexCurrentBall + 1).toString()
+              : 'Not yet drawn'
+            )
+            : 'Last Ball'
+          );
+          break;
+        case $scope.ACTIONS.INFO:
+          this.info.reading = this.balls[indexBall].reading;
+          this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
+            ? ((this.balls[indexBall].isDrawn)
+              ? 'Ball ' + (this.ordering.indexOf(indexBall) + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
+              : 'Not yet drawn'
+            )
+            : 'Last Ball'
+          );
+          break;
+        case $scope.ACTIONS.RESET:
+        default:
+          break;
+      } // switch action
+    }, // displayBallInfo()
+
     reset: function() {
       // Confirm process
       if (confirm('Really end this game?'))
@@ -108,41 +119,46 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         this.info.magic = '';
         this.info.order = '';
         this.info.reading = $scope.LABEL_BINGO;
-        this.displayBallInfo(this.ordering[this.indexCurrentBall], false, false);
+        this.displayBallInfo(this.ordering[this.indexCurrentBall], $scope.ACTIONS.RESET);
         $window.initialize();
       } // if confirm()
-    },
+    }, // reset()
+
     swapBalls: function(a, b) {
       var tempValue = this.ordering[a];
       this.ordering[a] = this.ordering[b];
       this.ordering[b] = tempValue;
-    },
+    }, // swapBalls()
+
     mixBalls: function(indexStart) {
       // Go through all balls
       for (var i = indexStart, iLen = $scope.NUMBER_BALLS; i < iLen; i++)
       {
         this.swapBalls(i, getRandomInt(indexStart, iLen - 1));
       } // for all balls i
-    },
+    }, // mixBalls()
+
     drawBall: function() {
       this.indexCurrentBall += 1;
       this.mixBalls(this.indexCurrentBall);
       this.balls[this.ordering[this.indexCurrentBall]].isDrawn = true;
-      this.displayBallInfo(this.ordering[this.indexCurrentBall], true, false);
-    },
+      this.displayBallInfo(this.ordering[this.indexCurrentBall], $scope.ACTIONS.DRAW);
+    }, // drawBall()
 
     swapMagicNumbers: function(a, b) {
       var tempValue = this.orderingMagicNumbers[a];
       this.orderingMagicNumbers[a] = this.orderingMagicNumbers[b];
       this.orderingMagicNumbers[b] = tempValue;
-    },
+    }, // swapMagicNumbers()
+
     mixMagicNumbers: function(indexStart) {
       // Go through all magic numbers
       for (var i = indexStart, iLen = $scope.NUMBER_MAGIC_NUMBERS; i < iLen; i++)
       {
         this.swapMagicNumbers(i, getRandomInt(indexStart, iLen - 1));
       } // for all magic numbers i
-    },
+    }, // mixMagicNumbers()
+
     drawMagic: function() {
       this.indexCurrentMagicNumber += 1;
       this.mixMagicNumbers(this.indexCurrentMagicNumber);
@@ -163,8 +179,8 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         // Add to current index of ball ordering
         this.ordering.splice(this.indexCurrentBall, 0, i);
       } // for all balls ending in magic number i
-      this.displayBallInfo(-1, true, true);
-    }
+      this.displayBallInfo(-1, $scope.ACTIONS.MAGIC);
+    } // drawMagic()
   };
 
 

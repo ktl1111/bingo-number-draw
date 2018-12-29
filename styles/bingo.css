@@ -52,6 +52,9 @@ div#preloaded-images {
     .box-info__reading
     {
       border: 1px solid black;
+      border-radius: 1rem;
+      text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: bold;
       font-size: 3rem;
       padding: 0.5rem;
@@ -119,6 +122,11 @@ div#preloaded-images {
     {
       background-color: #ffc0c0;
       color: darkred;
+    }
+    .box-info__reading--info
+    {
+      background-color: #20b2aa;
+      color: #7fffd4;
     }
     .button-draw
     {

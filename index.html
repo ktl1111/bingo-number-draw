@@ -20,7 +20,10 @@
                 ? 'box-info__reading--draw'
                 : ((roulette.info.action == ACTIONS.MAGIC)
                   ? 'box-info__reading--magic'
-                  : 'box-info__reading--reset'
+                  : ((roulette.info.action == ACTIONS.RESET)
+                    ? 'box-info__reading--reset'
+                    : 'box-info__reading--info'
+                  )
                 )
               )"></div>
           </td>
@@ -35,7 +38,7 @@
             ng-class="((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'ball__drawn' : 'ball__not-drawn')">
             <img ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].suffixFilename }}"
             ;wa
-              ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, false, false)"></img>
+              ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, ACTIONS.INFO)"></img>
           </td>
         </tr>
       </table> <!-- balls -->
