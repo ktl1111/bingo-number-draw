@@ -3,7 +3,7 @@
   background-color: #f0f0f0 !important;
 }
 
-.super-center 
+.super-center
 {
   /*
   position: absolute;
@@ -21,7 +21,7 @@
 div#preloaded-images {
    position: absolute;
    overflow: hidden;
-   left: -9999px; 
+   left: -9999px;
    top: -9999px;
    height: 1px;
    width: 1px;
@@ -31,13 +31,20 @@ div#preloaded-images {
 {
   width: 100%;
   text-align: center;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
   .table-info__magic,
   .table-buttons__magic
   {
     text-align: left;
+  }
+  .table-info__magic
+  {
+    text-align: center;
+    color: deeppink;
+    font-size: 2rem;
+    font-weight: bold;
   }
 
   .table-info__reading,
@@ -57,8 +64,28 @@ div#preloaded-images {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: bold;
       font-size: 3rem;
-      padding: 0.5rem;
+      padding: 1rem;
     }
+      .box-info__reading--magic
+      {
+        background-color: #ffc0ff;
+        color: #950095;
+      }
+      .box-info__reading--draw
+      {
+        background-color: palegreen;
+        color: forestgreen;
+      }
+      .box-info__reading--reset
+      {
+        background-color: #ffc0c0;
+        color: darkred;
+      }
+      .box-info__reading--info
+      {
+        background-color: #20b2aa;
+        color: #7fffd4;
+      }
 
   .table-info__order,
   .table-buttons__reset
@@ -69,11 +96,11 @@ div#preloaded-images {
   .table-info__magic,
   .table-info__order
   {
-    font-size: 1.4rem;
     vertical-align: middle;
   }
   .table-info__order
   {
+    font-size: 1.4rem;
     color: darkgray;
   }
 
@@ -96,39 +123,30 @@ div#preloaded-images {
         opacity: 0.65;
       }
     }
- 
+
     .button-magic,
     .button-draw,
     .button-reset
     {
       font-size: 1.25rem;
       font-weight: bold;
-      padding: 1rem;
+      padding: 0.5rem 3rem;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
     }
-    .button-magic,
-    .box-info__reading--magic    
+    .button-magic
     {
-      background-color: #ffc0ff;
-      color: #950095;
-    }
-    .button-draw,
-    .box-info__reading--draw    
-    {
-      background-color: palegreen;
-      color: forestgreen;
-    }
-    .button-reset,
-    .box-info__reading--reset    
-    {
-      background-color: #ffc0c0;
-      color: darkred;
-    }
-    .box-info__reading--info
-    {
-      background-color: #20b2aa;
-      color: #7fffd4;
+      background-color: #950095;
+      background-color: deeppink;
     }
     .button-draw
     {
-      padding: 1rem 4rem;
+      background-color: forestgreen;
+      background-color: green;
+    }
+    .button-reset
+    {
+      background-color: darkred;
+      background-color: red;
     }

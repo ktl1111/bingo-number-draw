@@ -67,23 +67,16 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       switch (action)
       {
         case $scope.ACTIONS.MAGIC:
-          this.info.magic = 'Magic: '
-            + this.magicNumbers
-              .filter(function (magic) { return (magic.isDrawn); })
-              .map(function (magic) { return magic.number; })
-                .join(', ');
+          this.info.magic = this.magicNumbers
+            .filter(function (magic) { return (magic.isDrawn); })
+            .map(function (magic) { return magic.number; })
+            .join(', ');
           this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
           this.info.order = '';
           break;
         case $scope.ACTIONS.DRAW:
           this.info.reading = this.balls[indexBall].reading;
-          this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
-            ? ((this.balls[indexBall].isDrawn)
-              ? 'Ball ' + (this.indexCurrentBall + 1).toString()
-              : 'Not yet drawn'
-            )
-            : 'Last Ball'
-          );
+          this.info.order = 'Ball ' + (this.indexCurrentBall + 1).toString();
           break;
         case $scope.ACTIONS.INFO:
           this.info.reading = this.balls[indexBall].reading;
