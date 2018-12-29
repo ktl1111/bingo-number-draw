@@ -1,6 +1,7 @@
 .super-center 
 {
 /*  background: black; */
+  /*
   position: absolute;
   color: #fff;
   top: 50%;
@@ -9,6 +10,7 @@
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
+  */
 }
 
 /* For image pre-loading */
@@ -20,3 +22,38 @@ div#preloaded-images {
    height: 1px;
    width: 1px;
 }
+
+  .table-buttons--magic,
+  .table-info--magic
+  {
+    text-align: left;
+  }
+
+  .table-buttons--draw,
+  .table-info--reading
+  {
+    text-align: center;
+  }
+  .table-info--reading
+  {
+    font-weight: bold;
+  }
+
+  .table-buttons--reset,
+  .table-info--order
+  {
+    text-align: right;
+  }
+
+  .table-info--reading
+  {
+    font-size: 2rem;
+    vertical-align: middle;
+  }
+  .table-info--order,
+  .table-info--order
+  {
+    font-size: 1.2rem;
+    vertical-align: middle;
+  }
+ 

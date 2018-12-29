@@ -7,13 +7,17 @@
   <body ng-app="bingo_web" ng-controller="controllerMain">
 
     <div class="super-center">
+
+      <!-- Info -->
       <table style="width: 100%">
         <tr>
-          <td style="width: 25%; text-align: left" ng-bind="roulette.info.magic"></td>
-          <td style="width: 50%; text-align: center; font-weight: bold" ng-bind="roulette.info.reading"></td>        
-          <td style="width: 25%; text-align: right" ng-bind="roulette.info.order"></td>        
+          <td style="width: 25%" class="table-info--magic"   ng-bind="roulette.info.magic"></td>
+          <td style="width: 50%" class="table-info--reading" ng-bind="roulette.info.reading"></td>        
+          <td style="width: 25%" class="table-info--order"   ng-bind="roulette.info.order"></td>        
         </tr>
-      </table>
+      </table> <!-- info -->
+
+      <!-- Balls -->
       <table style="width: 100%; text-align: center">
         <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
           <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
@@ -22,13 +26,12 @@
               ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, false, false)"></img>
           </td>
         </tr>
-      </table>
+      </table> <!-- balls -->
 
-      <!--    <div ng-bind="roulette.ordering | json"></div> -->
-
+      <!-- Buttons -->
       <table style="width: 100%">
         <tr>
-          <td style="width: 25%; text-align: left">
+          <td style="width: 25%" class="table-buttons--magic">
             <button type="button"
               ng-click="roulette.drawMagic()"
               ng-disabled="(roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1))"
@@ -36,14 +39,14 @@
               Magic 
             </button>
           </td>
-          <td style="width: 50%; text-align: center; font-weight: bold">
+          <td style="width: 50%" class="table-buttons--draw">
             <button type="button"
               ng-click="roulette.drawBall()"
               ng-disabled="(roulette.indexCurrentBall >= (NUMBER_BALLS - 1))">
               Draw
             </button>
           </td>        
-          <td style="width: 25%; text-align: right">
+          <td style="width: 25%" class="table-buttons--reset">
             <button type="button"
               ng-click="roulette.reset()"
               ng-disabled="(roulette.indexCurrentBall < 0)">
@@ -51,8 +54,9 @@
             </button>
           </td>        
         </tr>
-      </table>
-    </div>
+      </table> <!-- buttons -->
+
+    </div> <!-- super-center -->
 
     <div id="preloaded-images" ng-bind-html="renderHtml(HTML_PRELOAD_IMAGES)"></div>
     <script src="scripts/bingo_scripts.js"></script>
