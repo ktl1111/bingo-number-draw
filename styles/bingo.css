@@ -1,6 +1,6 @@
 .body-color
 {
-  background: #f0f0f0 !important;
+  background-color: #f0f0f0 !important;
 }
 
 .super-center 
@@ -31,60 +31,66 @@ div#preloaded-images {
 {
   width: 100%;
   text-align: center;
-  margin: 0.75rem 0;
+  margin: 1rem 0;
 }
 
-  .table-info--magic,
-  .table-buttons--magic
+  .table-info__magic,
+  .table-buttons__magic
   {
     text-align: left;
   }
 
-  .table-info--reading,
-  .table-buttons--draw
+  .table-info__reading,
+  .table-buttons__draw
   {
     text-align: center;
   }
-  .table-info--reading
+  .table-info__reading
   {
-    font-weight: bold;
+    vertical-align: middle;
   }
+    .box-info__reading
+    {
+      border: 1px solid black;
+      font-weight: bold;
+      font-size: 3rem;
+      padding: 0.5rem;
+    }
 
-  .table-info--order,
-  .table-buttons--reset
+  .table-info__order,
+  .table-buttons__reset
   {
     text-align: right;
   }
 
-  .table-info--reading
+  .table-info__magic,
+  .table-info__order
   {
-    font-size: 2rem;
+    font-size: 1.4rem;
     vertical-align: middle;
   }
-  .table-info--order,
-  .table-info--order
+  .table-info__order
   {
-    font-size: 1.2rem;
-    vertical-align: middle;
+    color: darkgray;
   }
 
-    .ball--drawn
+    .ball__drawn
     {
-      background: yellow;
-      border: 1px solid black;
-      animation: blinker 1s linear infinite;
+      background-color: yellow;
+      border: 1px solid gold;
+      animation: blinker 1.5s linear infinite;
     }
-    .ball--not-drawn
+    .ball__not-drawn
     {
-      background: none;
+      background-color: none;
       border: 1px solid transparent;
     }
     @keyframes blinker {
-      50% {
-        opacity: 0;
+      60% {
+        opacity: 0.25;
       }
-      50% {
-        opacity: 0.5;
+      40% {
+        opacity: 0.65;
       }
     }
  
@@ -96,13 +102,25 @@ div#preloaded-images {
       font-weight: bold;
       padding: 1rem;
     }
-    .button-draw
+    .button-magic,
+    .box-info__reading--magic    
     {
-      background: #ffc0ff;
+      background-color: #ffc0ff;
       color: #950095;
     }
-    .button-reset
+    .button-draw,
+    .box-info__reading--draw    
     {
-      background: #ffc0c0;
+      background-color: palegreen;
+      color: forestgreen;
     }
-
+    .button-reset,
+    .box-info__reading--reset    
+    {
+      background-color: #ffc0c0;
+      color: darkred;
+    }
+    .button-draw
+    {
+      padding: 1rem 4rem;
+    }

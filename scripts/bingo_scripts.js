@@ -12,9 +12,14 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     LETTERS: ['B', 'I', 'N', 'G', 'O'],
     NUMBERS: Array.apply(null, Array(15)).map(function(number, index) { return index; })
   };
+  $scope.ACTIONS = {
+    RESET: 0,
+    DRAW:  1,
+    MAGIC: 2
+  };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
-  $scope.LABEL_BINGO = 'B  I  N  G  O';
+  $scope.LABEL_BINGO = 'bingo';
 
 
   $scope.roulette = {
@@ -47,12 +52,14 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     ordering: Array.apply(null, Array($scope.NUMBER_BALLS)).map(function (val, index) { return index; }),
     orderingMagicNumbers: Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS)).map(function (val, index) { return index; }),
     info: {
+      action:  $scope.ACTIONS.RESET,
       order:   '',      
       reading: $scope.LABEL_BINGO
     },
 
     // Methods
     displayBallInfo: function(indexBall, isFromDraw, isFromMagic) {
+      this.info.action = isFromDraw + isFromMagic;
       // Check if from Magic button
       if (isFromMagic)
       {
@@ -63,9 +70,13 @@ app.controller('controllerMain', function($scope, $sce, $window) {
             .join(', ');
         this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
       } 
-      else
+      else if (isFromDraw)
       {
         this.info.reading = this.balls[indexBall].reading;
+      }
+      else
+      {
+        return;
       } // isFromMagic
 
       this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
@@ -97,6 +108,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         this.info.magic = '';
         this.info.order = '';
         this.info.reading = $scope.LABEL_BINGO;
+        this.displayBallInfo(this.ordering[this.indexCurrentBall], false, false);
         $window.initialize();
       } // if confirm()
     },
@@ -151,7 +163,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         // Add to current index of ball ordering
         this.ordering.splice(this.indexCurrentBall, 0, i);
       } // for all balls ending in magic number i
-      this.displayBallInfo(this.ordering[this.indexCurrentBall], true, true);
+      this.displayBallInfo(-1, true, true);
     }
   };
 
