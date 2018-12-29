@@ -18,7 +18,7 @@
       </table> <!-- info -->
 
       <!-- Balls -->
-      <table style="width: 100%; text-align: center">
+      <table style="width: 100%" class="table-balls">
         <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
           <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
             ng-style="{ background: ((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'yellow' : 'none') }">
