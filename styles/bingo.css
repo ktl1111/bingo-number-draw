@@ -23,6 +23,12 @@ div#preloaded-images {
    width: 1px;
 }
 
+.table-balls
+{
+  width: 100%;
+  text-align: center;
+}
+
   .table-buttons--magic,
   .table-info--magic
   {
