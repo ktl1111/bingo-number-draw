@@ -1,6 +1,10 @@
+.body-color
+{
+  background: #f0f0f0 !important;
+}
+
 .super-center 
 {
-/*  background: black; */
   /*
   position: absolute;
   color: #fff;
@@ -27,17 +31,17 @@ div#preloaded-images {
 {
   width: 100%;
   text-align: center;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
 }
 
-  .table-buttons--magic,
-  .table-info--magic
+  .table-info--magic,
+  .table-buttons--magic
   {
     text-align: left;
   }
 
-  .table-buttons--draw,
-  .table-info--reading
+  .table-info--reading,
+  .table-buttons--draw
   {
     text-align: center;
   }
@@ -46,8 +50,8 @@ div#preloaded-images {
     font-weight: bold;
   }
 
-  .table-buttons--reset,
-  .table-info--order
+  .table-info--order,
+  .table-buttons--reset
   {
     text-align: right;
   }
@@ -63,4 +67,42 @@ div#preloaded-images {
     font-size: 1.2rem;
     vertical-align: middle;
   }
+
+    .ball--drawn
+    {
+      background: yellow;
+      border: 1px solid black;
+      animation: blinker 1s linear infinite;
+    }
+    .ball--not-drawn
+    {
+      background: none;
+      border: 1px solid transparent;
+    }
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
  
+    .button-magic,
+    .button-draw,
+    .button-reset
+    {
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding: 1rem;
+    }
+    .button-draw
+    {
+      background: #ffc0ff;
+      color: #950095;
+    }
+    .button-reset
+    {
+      background: #ffc0c0;
+    }
+

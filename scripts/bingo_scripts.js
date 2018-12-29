@@ -1,6 +1,12 @@
+function initialize()
+{
+  document.getElementById('btnDraw').focus();
+} // initialize()
+
+
 var app = angular.module('bingo_web', []);
 
-app.controller('controllerMain', function($scope, $sce) {
+app.controller('controllerMain', function($scope, $sce, $window) {
   // Constants
   $scope.GRID_ELEMENTS = {
     LETTERS: ['B', 'I', 'N', 'G', 'O'],
@@ -91,6 +97,7 @@ app.controller('controllerMain', function($scope, $sce) {
         this.info.magic = '';
         this.info.order = '';
         this.info.reading = $scope.LABEL_BINGO;
+        $window.initialize();
       } // if confirm()
     },
     swapBalls: function(a, b) {
