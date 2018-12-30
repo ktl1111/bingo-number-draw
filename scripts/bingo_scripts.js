@@ -16,7 +16,6 @@ function goFullScreen()
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
   }
-  console.log('a');
 }
 
 

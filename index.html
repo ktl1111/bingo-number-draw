@@ -27,7 +27,10 @@
                 )
               )"></div>
           </td>
-          <td style="width: 40%" class="table-info__order"   ng-bind="roulette.info.order"></td>        
+          <td style="width: 40%" class="table-info__order">
+            <button style="display:none" type="button" onclick="goFullScreen()">full</button>
+            <div ng-bind="roulette.info.order"></div>
+          </td>        
         </tr>
       </table> <!-- info -->
 
@@ -59,7 +62,7 @@
           <td style="width: 50%" class="table-buttons__draw">
             <button type="button" class="button-draw"
               id="btnDraw"
-              onclick="goFullScreen()"
+              ng-click="roulette.drawBall()"
               ng-hide="(roulette.indexCurrentBall >= (NUMBER_BALLS - 1))">
               draw
             </button>
