@@ -7,7 +7,7 @@
   <body ng-app="bingo_web" ng-controller="controllerMain" 
     class="body-color" onload="initialize()">
 
-    <div class="super-center">
+    <div id="mainContainer" class="super-center">
 
       <!-- Info -->
       <table style="width: 100%">
@@ -59,7 +59,7 @@
           <td style="width: 50%" class="table-buttons__draw">
             <button type="button" class="button-draw"
               id="btnDraw"
-              ng-click="roulette.drawBall()"
+              onclick="goFullScreen()"
               ng-hide="(roulette.indexCurrentBall >= (NUMBER_BALLS - 1))">
               draw
             </button>
