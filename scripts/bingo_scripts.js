@@ -20,7 +20,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
-  $scope.LABEL_BINGO = 'bingo';
+  $scope.LABEL_BINGO = 'BINGO!';
 
 
   $scope.roulette = {
@@ -37,7 +37,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
           paddedNumber = padLeft(number, 2);
         return {
           number:         paddedNumber,
-          reading:        letter + ' - ' + number,
+          reading:        letter +'-' + number,
           suffixFilename: '_' + paddedNumber + '.png',
           isDrawn:        false,
           isMagic:        false

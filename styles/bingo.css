@@ -1,6 +1,7 @@
 .body-color
 {
   background-color: #f0f0f0 !important;
+  font-family: Verdana;
 }
 
 .super-center
@@ -59,7 +60,7 @@ div#preloaded-images {
     .box-info__reading
     {
       border: 1px solid black;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: bold;
@@ -132,21 +133,35 @@ div#preloaded-images {
       font-weight: bold;
       padding: 0.5rem 3rem;
       border-radius: 6px;
-      color: white;
+      color: black;
       cursor: pointer;
+      outline: none;
     }
+    button:focus
+    {
+      background-color: darkslategray;
+      color: gainsboro;
+    }
+    /*
     .button-magic
     {
       background-color: #950095;
       background-color: deeppink;
+        background-color: darkgray;;
+        color: #950095;
     }
     .button-draw
     {
       background-color: forestgreen;
       background-color: green;
+        background-color: palegreen;
+        color: forestgreen;
     }
     .button-reset
     {
       background-color: darkred;
       background-color: red;
+        background-color: #ffc0c0;
+        color: darkred;
     }
+    */
