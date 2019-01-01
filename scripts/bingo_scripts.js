@@ -53,18 +53,11 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         return {
           number:         paddedNumber,
           reading:        letter +'-' + number,
-          suffixFilename: '_' + paddedNumber + '.png',
-          isDrawn:        false,
-          isMagic:        false
+          isDrawn:        false
         };
       }),
     magicNumbers: Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS))
-      .map(function (val, index) {
-        return {
-          number:  index,
-          isDrawn: false
-        };
-      }),
+      .map(function (val, index) { return false; }),
     ordering: Array.apply(null, Array($scope.NUMBER_BALLS)).map(function (val, index) { return index; }),
     orderingMagicNumbers: Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS)).map(function (val, index) { return index; }),
     info: {
@@ -82,10 +75,20 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       switch (action)
       {
         case $scope.ACTIONS.MAGIC:
-          this.info.magic = this.magicNumbers
-            .filter(function (magic) { return (magic.isDrawn); })
-            .map(function (magic) { return magic.number; })
-            .join(', ');
+          this.info.magic = '';
+          // Go through all magic numbers
+          for (var i = 0, iLen = $scope.NUMBER_MAGIC_NUMBERS; i < iLen; i++)
+          {
+            // Check if drawn
+            if (this.magicNumbers[i])
+            {
+              this.info.magic += i + ', ';
+            } // if magic was drawn
+          } // for all magic numbers i 
+          // Remove last comma if it exists
+          if (this.info.magic.length)
+            this.info.magic = this.info.magic.substr(0, this.info.magic.length - ', '.length);
+
           this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
           this.info.order = '';
           break;
@@ -113,15 +116,19 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       // Confirm process
       if (confirm('Really end this game?'))
       {
+        // Go through all drawn balls
+        for (var i = 0; i <= this.indexCurrentBall; i++)
+        {
+          // Reset drawn status
+          this.balls[this.ordering[i]].isDrawn = false;
+        } // for all balls i
+        // Go through all magic numbers
+        for (var i = 0; i <= this.indexCurrentMagicNumber; i++)
+        {
+          this.magicNumbers[this.orderingMagicNumbers[i]] = false;
+        } // for all magic numbers i
         this.indexCurrentBall = -1;
         this.indexCurrentMagicNumber = -1;
-        this.balls.forEach(function (ball) {
-          ball.isDrawn = false;
-          ball.isMagic = false;
-        });
-        this.magicNumbers.forEach(function (magic) {
-          magic.isDrawn = false;
-        });
         this.ordering = Array.apply(null, Array($scope.NUMBER_BALLS)).map(function (val, index) { return index; });
         this.orderingMagicNumbers = Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS)).map(function (val, index) { return index; });
         this.info.magic = '';
@@ -132,46 +139,38 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       } // if confirm()
     }, // reset()
 
-    swapBalls: function(a, b) {
-      var tempValue = this.ordering[a];
-      this.ordering[a] = this.ordering[b];
-      this.ordering[b] = tempValue;
-    }, // swapBalls()
-
-    mixBalls: function(indexStart) {
-      // Go through all balls
-      for (var i = indexStart, iLen = $scope.NUMBER_BALLS; i < iLen; i++)
+    // Swap numbers. 
+    swap: function(array, a, b) {
+      // Check if a and b are different
+      // Must be different, otherwise they will both be zero (reference-based)
+      if (a != b)
       {
-        this.swapBalls(i, getRandomInt(indexStart, iLen - 1));
+        array[a] = array[a] + array[b];
+        array[b] = array[a] - array[b];
+        array[a] = array[a] - array[b];
+      } // if different
+    }, // swap()
+
+    mix: function(array, indexStart, numberChoices) {
+      // Go through all balls
+      for (var i = indexStart, iLen = numberChoices - 1; i < iLen; i++)
+      {
+        this.swap(array, i, getRandomInt(indexStart, iLen));
       } // for all balls i
-    }, // mixBalls()
+    }, // mix()
 
     drawBall: function() {
       this.indexCurrentBall += 1;
-      this.mixBalls(this.indexCurrentBall);
+      this.mix(this.ordering, this.indexCurrentBall, $scope.NUMBER_BALLS);
       this.balls[this.ordering[this.indexCurrentBall]].isDrawn = true;
       this.displayBallInfo(this.ordering[this.indexCurrentBall], $scope.ACTIONS.DRAW);
     }, // drawBall()
 
-    swapMagicNumbers: function(a, b) {
-      var tempValue = this.orderingMagicNumbers[a];
-      this.orderingMagicNumbers[a] = this.orderingMagicNumbers[b];
-      this.orderingMagicNumbers[b] = tempValue;
-    }, // swapMagicNumbers()
-
-    mixMagicNumbers: function(indexStart) {
-      // Go through all magic numbers
-      for (var i = indexStart, iLen = $scope.NUMBER_MAGIC_NUMBERS; i < iLen; i++)
-      {
-        this.swapMagicNumbers(i, getRandomInt(indexStart, iLen - 1));
-      } // for all magic numbers i
-    }, // mixMagicNumbers()
-
     drawMagic: function() {
       this.indexCurrentMagicNumber += 1;
-      this.mixMagicNumbers(this.indexCurrentMagicNumber);
+      this.mix(this.orderingMagicNumbers, this.indexCurrentMagicNumber, $scope.NUMBER_MAGIC_NUMBERS);
       // Mark magic number as drawn
-      this.magicNumbers[this.orderingMagicNumbers[this.indexCurrentMagicNumber]].isDrawn = true;
+      this.magicNumbers[this.orderingMagicNumbers[this.indexCurrentMagicNumber]] = true;
       // Go through all balls ending in magic number
       for (var i = this.orderingMagicNumbers[this.indexCurrentMagicNumber] - 1, iLen = $scope.NUMBER_BALLS; i < iLen; i += 10)
       {
@@ -181,7 +180,6 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         this.indexCurrentBall += 1;
         // Mark ball as magic and drawn
         this.balls[i].isDrawn = true;
-        this.balls[i].isMagic = true;
         // Delete from ball ordering
         this.ordering.splice(this.ordering.indexOf(i), 1);
         // Add to current index of ball ordering
@@ -190,7 +188,6 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       this.displayBallInfo(-1, $scope.ACTIONS.MAGIC);
     } // drawMagic()
   };
-
 
   // Pre-load filled ball images
   $scope.HTML_PRELOAD_IMAGES = Array.apply(null, Array($scope.NUMBER_BALLS))
@@ -222,8 +219,8 @@ function padLeft(strToPad, n, strPadValue)
 
 
 // https://teamtreehouse.com/community/to-generate-a-random-number-between-0-and-20
-//Will return a number inside the given range, inclusive of both minimum and maximum
-//i.e. if min=0, max=20, returns a number from 0-20
+// Will return a number inside the given range, inclusive of both minimum and maximum
+// i.e. if min=0, max=20, returns a number from 0-20
 function getRandomInt(min, max) 
 {
   return Math.floor(Math.random() * (max - min + 1)) + min;

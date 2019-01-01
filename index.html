@@ -39,8 +39,7 @@
         <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
           <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
             ng-class="((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'ball__drawn' : 'ball__not-drawn')">
-            <img ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].suffixFilename }}"
-            ;wa
+            <img ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}_{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].number }}.png"
               ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, ACTIONS.INFO)"></img>
           </td>
         </tr>
@@ -54,7 +53,7 @@
               ng-click="roulette.drawMagic()"
               ng-hide="(
                 (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1))
-                || ((roulette.indexCurrentBall > -1) && (!roulette.balls[roulette.ordering[roulette.indexCurrentBall]].isMagic))
+                || (roulette.info.action == ACTIONS.DRAW)
               )">
               magic 
             </button>
@@ -70,14 +69,14 @@
           <td style="width: 25%" class="table-buttons__reset">
             <button type="button" class="button-reset"
               ng-click="roulette.reset()"
-              ng-hide="(
-              (roulette.indexCurrentBall < 0)
-              )">
+              ng-hide="(roulette.indexCurrentBall < 0)">
               reset
             </button>
           </td>        
         </tr>
       </table> <!-- buttons -->
+
+			<!--			<div ng-bind="roulette.ordering | json"></div> -->
 
     </div> <!-- super-center -->
 

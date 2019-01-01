@@ -2,12 +2,13 @@
 {
   background-color: #f0f0f0 !important;
   font-family: Verdana;
+  position: relative;
 }
 
 
 .super-center
 {
-  /*
+  width: 98%;
   position: absolute;
   color: #fff;
   top: 50%;
@@ -16,7 +17,6 @@
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  */
 }
 
 /* For image pre-loading */
