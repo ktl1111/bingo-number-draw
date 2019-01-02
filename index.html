@@ -13,8 +13,15 @@
       <!-- Info -->
       <table style="width: 100%">
         <tr>
-          <td style="width: 37%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
-          <td style="width:  3%" class="table-info__rewind">
+          <td style="width: 37%"></td>
+          <td style="width:  3%"></td>
+          <td style="width: 20%"></td>
+          <td style="width:  3%"></td>
+          <td style="width: 37%"></td>
+        </tr>
+        <tr>
+          <td class="table-info__magic" ng-bind="roulette.info.magic"></td>
+          <td class="table-info__rewind">
             <span class="table-info__rewind--enabled"
               ng-hide="(
                 (roulette.indexCurrentBall < 1)
@@ -29,7 +36,7 @@
               && (roulette.info.indexBallDisplayed <= roulette.indexCurrentBall)
             )">&nbsp;</span>
           </td>
-          <td style="width: 20%" class="table-info__reading">
+          <td class="table-info__reading">
             <div class="box-info__reading"
               ng-bind="roulette.info.reading"
               ng-class="((roulette.info.action == ACTIONS.DRAW)
@@ -43,7 +50,7 @@
                 )
               )"></div>
           </td>
-          <td style="width:  3%" class="table-info__forward">
+          <td class="table-info__forward">
             <span class="table-info__forward--enabled"
               ng-hide="(
                 (roulette.indexCurrentBall < 1)
@@ -58,7 +65,7 @@
               && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
             )">&nbsp;</span>
           </td>
-          <td style="width: 37%" class="table-info__order">
+          <td class="table-info__order">
             <button style="display:none" type="button" onclick="goFullScreen()">full</button>
             <div ng-bind="roulette.info.order"></div>
           </td>        
