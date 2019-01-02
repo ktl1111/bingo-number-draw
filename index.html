@@ -13,7 +13,16 @@
       <!-- Info -->
       <table style="width: 100%">
         <tr>
-          <td style="width: 40%" class="table-info__magic"   ng-bind="roulette.info.magic"></td>
+          <td style="width: 37%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
+          <td style="width:  3%" class="table-info__rewind">
+            <span ng-show="(
+              (roulette.indexCurrentBall >= 1)
+              && (roulette.info.indexBallDisplayed > 0)
+              && (roulette.info.indexBallDisplayed <= roulette.indexCurrentBall)
+            )"
+              ng-click="roulette.displayBallInfo(roulette.ordering[roulette.info.indexBallDisplayed - 1], ACTIONS.INFO)"
+            >&#11164;</span>
+          </td>
           <td style="width: 20%" class="table-info__reading">
             <div class="box-info__reading"
               ng-bind="roulette.info.reading"
@@ -28,7 +37,16 @@
                 )
               )"></div>
           </td>
-          <td style="width: 40%" class="table-info__order">
+          <td style="width:  3%" class="table-info__forward">
+            <span ng-show="(
+              (roulette.indexCurrentBall >= 1)
+              && (roulette.info.indexBallDisplayed > -1)
+              && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
+            )"
+              ng-click="roulette.displayBallInfo(roulette.ordering[roulette.info.indexBallDisplayed + 1], ACTIONS.INFO)"
+            >&#11166;</span>
+          </td>
+          <td style="width: 37%" class="table-info__order">
             <button style="display:none" type="button" onclick="goFullScreen()">full</button>
             <div ng-bind="roulette.info.order"></div>
           </td>        
@@ -54,7 +72,7 @@
               ng-click="roulette.drawMagic()"
               ng-hide="(
                 (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1))
-                || (roulette.info.action == ACTIONS.DRAW)
+                || (roulette.info.isMagicDone)
               )">
               magic 
             </button>

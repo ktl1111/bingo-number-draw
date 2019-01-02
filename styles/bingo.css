@@ -3,17 +3,28 @@
   background-color: #f0f0f0 !important;
   font-family: Verdana;
   position: relative;
+  /*
+   * Disable text selection
+   * https://stackoverflow.com/questions/3779534/how-do-i-disable-text-selection-with-css-or-javascript 
+   */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 
-.super-center
+.super-centera
 {
-  width: 98%;
+  width: 95%;
   position: absolute;
   color: #fff;
   top: 50%;
   left: 50%;
-  padding: 15px;
+  /* padding: 15px; */
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
@@ -47,6 +58,22 @@ div#preloaded-images {
     color: deeppink;
     font-size: 2rem;
     font-weight: bold;
+  }
+
+  .table-info__rewind,
+  .table-info__forward
+  {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .table-info__rewind
+  {
+    text-align: left;
+  }
+  .table-info__forward
+  {
+    text-align: right;
   }
 
   .table-info__reading,

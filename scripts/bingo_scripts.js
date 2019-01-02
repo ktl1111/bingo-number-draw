@@ -52,7 +52,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
           paddedNumber = padLeft(number, 2);
         return {
           number:         paddedNumber,
-          reading:        letter +'-' + number,
+          reading:        letter + '-' + number,
           isDrawn:        false
         };
       }),
@@ -61,9 +61,11 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     ordering: Array.apply(null, Array($scope.NUMBER_BALLS)).map(function (val, index) { return index; }),
     orderingMagicNumbers: Array.apply(null, Array($scope.NUMBER_MAGIC_NUMBERS)).map(function (val, index) { return index; }),
     info: {
-      action:  $scope.ACTIONS.RESET,
-      order:   '',      
-      reading: $scope.LABEL_BINGO
+      action:             $scope.ACTIONS.RESET,
+      order:              '',      
+      reading:            $scope.LABEL_BINGO,
+      indexBallDisplayed: -1,
+      isMagicDone:        false
     },
 
     // Methods
@@ -89,23 +91,32 @@ app.controller('controllerMain', function($scope, $sce, $window) {
           if (this.info.magic.length)
             this.info.magic = this.info.magic.substr(0, this.info.magic.length - ', '.length);
 
+          this.info.indexBallDisplayed = this.indexCurrentBall;
           this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
           this.info.order = '';
           break;
+
         case $scope.ACTIONS.DRAW:
+          // Set isMagicDone the first time "Draw" is pressed
+          if (!this.info.isMagicDone)
+            this.info.isMagicDone = true;
+          this.info.indexBallDisplayed = this.indexCurrentBall;
           this.info.reading = this.balls[indexBall].reading;
           this.info.order = 'Ball ' + (this.indexCurrentBall + 1).toString();
           break;
+
         case $scope.ACTIONS.INFO:
+          this.info.indexBallDisplayed = this.ordering.indexOf(indexBall);
           this.info.reading = this.balls[indexBall].reading;
           this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
             ? ((this.balls[indexBall].isDrawn)
-              ? 'Ball ' + (this.ordering.indexOf(indexBall) + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
+              ? 'Ball ' + (this.info.indexBallDisplayed + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
               : 'Not yet drawn'
             )
             : 'Last Ball'
           );
           break;
+
         case $scope.ACTIONS.RESET:
         default:
           break;
@@ -134,6 +145,8 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         this.info.magic = '';
         this.info.order = '';
         this.info.reading = $scope.LABEL_BINGO;
+        this.info.indexBallDisplayed = -1;
+        this.info.isMagicDone = false;
         this.displayBallInfo(this.ordering[this.indexCurrentBall], $scope.ACTIONS.RESET);
         $window.initialize();
       } // if confirm()
