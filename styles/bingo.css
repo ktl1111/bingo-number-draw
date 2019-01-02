@@ -55,7 +55,7 @@ table
   {
     cursor: help;
     /* for Responsive web design */
-    max-width: 100%;
+    /* max-width: 100%; */
   }
 
   .table-info__magic,
