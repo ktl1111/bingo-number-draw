@@ -24,6 +24,10 @@
   {
     background-color: red !important;
   }
+  .table-balls__ball
+  {
+    width: 95%;
+  }
 } 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
