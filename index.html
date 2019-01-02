@@ -14,8 +14,8 @@
       <!-- Info -->
       <table>
         <tr>
-          <td style="width:35%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
-          <td style="width: 5%" class="table-info__rewind">
+          <td style="width:35vw" class="table-info__magic" ng-bind="roulette.info.magic"></td>
+          <td style="width: 5vw" class="table-info__rewind">
             <span class="table-info__rewind--enabled"
               ng-show="(
                 (roulette.indexCurrentBall >= 1)
@@ -25,7 +25,7 @@
               ng-click="roulette.viewBallHistory(-1)"
             >&#x25c0;</span>
           </td>
-          <td style="width:20%" class="table-info__reading">
+          <td style="width:20vw" class="table-info__reading">
             <div class="box-info__reading"
               ng-bind="roulette.info.reading"
               ng-class="((roulette.info.action == ACTIONS.DRAW)
@@ -39,7 +39,7 @@
                 )
               )"></div>
           </td>
-          <td style="width: 5%" class="table-info__forward">
+          <td style="width: 5vw" class="table-info__forward">
             <span class="table-info__forward--enabled"
               ng-show="(
                 (roulette.indexCurrentBall >= 1)
@@ -49,7 +49,7 @@
               ng-click="roulette.viewBallHistory(+1)"
             >&#x25b6;</span>
           </td>
-          <td style="width: 35%" class="table-info__order">
+          <td style="width: 35vw" class="table-info__order">
             <button style="display:none" type="button" onclick="goFullScreen()">full</button>
             <div ng-bind="roulette.info.order"></div>
           </td>        
@@ -71,7 +71,7 @@
       <!-- Buttons -->
       <table>
         <tr>
-          <td style="width: 25%" class="table-buttons__magic">
+          <td style="width: 25vw" class="table-buttons__magic">
             <button type="button" class="button-magic"
               ng-click="roulette.drawMagic()"
               ng-hide="(
@@ -81,7 +81,7 @@
               magic 
             </button>
           </td>
-          <td style="width: 50%" class="table-buttons__draw">
+          <td style="width: 50vw" class="table-buttons__draw">
             <button type="button" class="button-draw"
               id="btnDraw"
               ng-click="roulette.drawBall()"
@@ -89,7 +89,7 @@
               draw
             </button>
           </td>        
-          <td style="width: 25%" class="table-buttons__reset">
+          <td style="width: 25vw" class="table-buttons__reset">
             <button type="button" class="button-reset"
               ng-click="roulette.reset()"
               ng-hide="(roulette.indexCurrentBall < 0)">
