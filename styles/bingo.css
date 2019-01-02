@@ -49,8 +49,12 @@ table
 .table-balls
 {
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.0rem 0 0.5rem 0;
 }
+  .table-balls > tbody > tr > td
+  {
+    padding: 0;
+  }
   .table-balls__ball
   {
     cursor: help;
@@ -109,7 +113,7 @@ table
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: bold;
       font-size: 3rem;
-      padding: 1rem;
+      padding: 0.5rem;
     }
       .box-info__reading--magic
       {

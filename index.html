@@ -57,14 +57,16 @@
 
       <!-- Balls -->
       <table class="table-balls">
-        <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
-          <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
-            ng-class="((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'ball__drawn' : 'ball__not-drawn')">
-            <img class="table-balls__ball"
-              ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}_{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].number }}.png"
-              ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, ACTIONS.INFO)"></img>
-          </td>
-        </tr>
+        <tbody>
+          <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
+            <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
+              ng-class="((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'ball__drawn' : 'ball__not-drawn')">
+              <img class="table-balls__ball"
+                ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}_{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].number }}.png"
+                ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, ACTIONS.INFO)"></img>
+            </td>
+          </tr>
+        </tbody>
       </table> <!-- balls -->
 
       <!-- Buttons -->
