@@ -16,7 +16,7 @@
                                   supported by Chrome and Opera */
 }
 
-/* Responsive Web Design Breakpoints
+/* Responsive Web Design Breakpoints for Height */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) 
 {
@@ -28,8 +28,13 @@
   {
     width: 95%;
   }
+  .box-info__reading
+  {
+    font-size: 1.5rem;
+  }
 } 
 
+/* try this */
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) 
 {
