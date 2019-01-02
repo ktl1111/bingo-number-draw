@@ -16,9 +16,17 @@
                                   supported by Chrome and Opera */
 }
 
-@media only screen and (max-width: 640px) {
-  .body-color {
+
+/* Mobiles: for Responsive web design */
+@media only screen and (max-width: 1023px) 
+{
+  .body-color 
+  {
     background-color: black !important;
+  }
+  .table-balls__ball
+  {
+    width: 50%;
   }
 }
 
@@ -64,8 +72,6 @@ table
   .table-balls__ball
   {
     cursor: help;
-    /* for Responsive web design */
-    /* max-width: 100%; */
   }
 
   .table-info__magic,
@@ -157,6 +163,7 @@ table
   {
     font-size: 1.4rem;
     color: darkgray;
+    padding-right: 1.25rem;
   }
 
     .ball__drawn
