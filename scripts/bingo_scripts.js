@@ -123,6 +123,10 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       } // switch action
     }, // displayBallInfo()
 
+    viewBallHistory: function(step) {
+      $scope.roulette.displayBallInfo(roulette.ordering[roulette.info.indexBallDisplayed + step], ACTIONS.INFO);
+    }, // viewBallHistory()
+
     reset: function() {
       // Confirm process
       if (confirm('Really end this game?'))

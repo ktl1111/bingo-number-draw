@@ -40,9 +40,14 @@ div#preloaded-images {
    width: 1px;
 }
 
+table
+{
+  table-layout: fixed;
+  width: 100%;
+}
+
 .table-balls
 {
-  width: 100%;
   text-align: center;
   margin: 1.5rem 0;
 }
