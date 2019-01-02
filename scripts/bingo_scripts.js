@@ -124,7 +124,10 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     }, // displayBallInfo()
 
     viewBallHistory: function(step) {
-      $scope.roulette.displayBallInfo($scope.roulette.ordering[$scope.roulette.info.indexBallDisplayed + step], $scope.ACTIONS.INFO);
+      this.displayBallInfo(
+        this.ordering[this.info.indexBallDisplayed + step],
+        $scope.ACTIONS.INFO
+      );
     }, // viewBallHistory()
 
     reset: function() {
