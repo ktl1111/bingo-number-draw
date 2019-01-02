@@ -15,13 +15,19 @@
         <tr>
           <td style="width: 37%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
           <td style="width:  3%" class="table-info__rewind">
-            <span ng-hide="(
-              (roulette.indexCurrentBall < 1)
-              || (roulette.info.indexBallDisplayed <= 0)
-              || (roulette.info.indexBallDisplayed > roulette.indexCurrentBall)
-            )"
+            <span class="table-info__rewind--enabled"
+              ng-hide="(
+                (roulette.indexCurrentBall < 1)
+                || (roulette.info.indexBallDisplayed <= 0)
+                || (roulette.info.indexBallDisplayed > roulette.indexCurrentBall)
+              )"
               ng-click="roulette.displayBallInfo(roulette.ordering[roulette.info.indexBallDisplayed - 1], ACTIONS.INFO)"
             >&#x25c0;</span>
+            <span ng-hide="(
+              (roulette.indexCurrentBall >= 1)
+              && (roulette.info.indexBallDisplayed > 0)
+              && (roulette.info.indexBallDisplayed <= roulette.indexCurrentBall)
+            )">&nbsp;</span>
           </td>
           <td style="width: 20%" class="table-info__reading">
             <div class="box-info__reading"
@@ -38,13 +44,19 @@
               )"></div>
           </td>
           <td style="width:  3%" class="table-info__forward">
-            <span ng-hide="(
-              (roulette.indexCurrentBall < 1)
-              || (roulette.info.indexBallDisplayed <= -1)
-              || (roulette.info.indexBallDisplayed >= roulette.indexCurrentBall)
-            )"
+            <span class="table-info__forward--enabled"
+              ng-hide="(
+                (roulette.indexCurrentBall < 1)
+                || (roulette.info.indexBallDisplayed <= -1)
+                || (roulette.info.indexBallDisplayed >= roulette.indexCurrentBall)
+              )"
               ng-click="roulette.displayBallInfo(roulette.ordering[roulette.info.indexBallDisplayed + 1], ACTIONS.INFO)"
             >&#x25b6;</span>
+            <span ng-hide="(
+              (roulette.indexCurrentBall >= 1)
+              && (roulette.info.indexBallDisplayed > -1)
+              && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
+            )">&nbsp;</span>
           </td>
           <td style="width: 37%" class="table-info__order">
             <button style="display:none" type="button" onclick="goFullScreen()">full</button>

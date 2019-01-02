@@ -69,7 +69,6 @@ div#preloaded-images {
   {
     font-size: 2rem;
     font-weight: bold;
-    cursor: pointer;
     color: silver;
   }
   .table-info__rewind
@@ -80,6 +79,11 @@ div#preloaded-images {
   {
     text-align: right;
   }
+    .table-info__rewind--enabled,
+    .table-info__forward--enabled
+    {
+      cursor: pointer;
+    }
 
   .table-info__reading,
   .table-buttons__draw
