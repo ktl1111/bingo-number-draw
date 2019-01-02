@@ -46,6 +46,10 @@ div#preloaded-images {
   text-align: center;
   margin: 1.5rem 0;
 }
+  .table-balls__ball
+  {
+    cursor: help;
+  }
 
   .table-info__magic,
   .table-buttons__magic
@@ -66,6 +70,7 @@ div#preloaded-images {
     font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
+    color: silver;
   }
   .table-info__rewind
   {
