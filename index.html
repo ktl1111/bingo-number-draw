@@ -13,8 +13,8 @@
       <!-- Info -->
       <table>
         <tr>
-          <td style="width:37%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
-          <td style="width: 3%" class="table-info__rewind">
+          <td style="width:35%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
+          <td style="width: 5%" class="table-info__rewind">
             <span class="table-info__rewind--enabled"
               ng-bind="((
                 (roulette.indexCurrentBall >= 1)
@@ -41,7 +41,7 @@
                 )
               )"></div>
           </td>
-          <td style="width:3%" class="table-info__forward">
+          <td style="width: 5%" class="table-info__forward">
             <span class="table-info__forward--enabled"
               ng-hide="(
                 (roulette.indexCurrentBall < 1)
@@ -56,7 +56,7 @@
               && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
             )">&nbsp;</span>
           </td>
-          <td style="width: 37%" class="table-info__order">
+          <td style="width: 35%" class="table-info__order">
             <button style="display:none" type="button" onclick="goFullScreen()">full</button>
             <div ng-bind="roulette.info.order"></div>
           </td>        
