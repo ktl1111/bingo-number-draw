@@ -16,15 +16,12 @@
           <td style="width:35%" class="table-info__magic" ng-bind="roulette.info.magic"></td>
           <td style="width: 5%" class="table-info__rewind">
             <span class="table-info__rewind--enabled"
-              ng-bind="((
+              ng-show="(
                 (roulette.indexCurrentBall >= 1)
                 && (roulette.info.indexBallDisplayed > 0)
                 && (roulette.info.indexBallDisplayed <= roulette.indexCurrentBall)
-              )
-                ? '&#x25c0;'
-                : '&nbsp;'
               )"
-              ng-click="roulette.viewBallHistory(+1)"
+              ng-click="roulette.viewBallHistory(-1)"
             >&#x25c0;</span>
           </td>
           <td style="width:20%" class="table-info__reading">
@@ -42,14 +39,17 @@
               )"></div>
           </td>
           <td style="width: 5%" class="table-info__forward">
-            <span class="table-info__forward--enabled"
-              ng-hide="(
-                (roulette.indexCurrentBall < 1)
-                || (roulette.info.indexBallDisplayed <= -1)
-                || (roulette.info.indexBallDisplayed >= roulette.indexCurrentBall)
+            <span 
+              ng-bind="((
+                (roulette.indexCurrentBall >= 1)
+                && (roulette.info.indexBallDisplayed > -1)
+                && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
+              )
+                ? '&#x25b6;'
+                : '&nbsp;'
               )"
-              ng-click="roulette.displayBallInfo(roulette.ordering[roulette.info.indexBallDisplayed + 1], ACTIONS.INFO)"
-            >&#x25b6;</span>
+              ng-click="roulette.viewBallHistory(+1)"
+            ></span>
             <span ng-hide="(
               (roulette.indexCurrentBall >= 1)
               && (roulette.info.indexBallDisplayed > -1)
