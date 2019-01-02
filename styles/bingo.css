@@ -54,6 +54,7 @@ table
   .table-balls__ball
   {
     cursor: help;
+    width: 100%;
   }
 
   .table-info__magic,
