@@ -1,6 +1,7 @@
 function initialize()
 {
   document.getElementById('btnDraw').focus();
+  alert(window.screen.width + ' x ' + window.screen.height);
 } // initialize()
 
 

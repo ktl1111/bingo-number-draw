@@ -16,6 +16,12 @@
                                   supported by Chrome and Opera */
 }
 
+@media only screen and (max-width: 640px) {
+  .body-color {
+    background-color: black !important;
+  }
+}
+
 
 .super-center
 {
