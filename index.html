@@ -39,22 +39,14 @@
               )"></div>
           </td>
           <td style="width: 5%" class="table-info__forward">
-            <span 
-              ng-bind="((
+            <span class="table-info__forward--enabled"
+              ng-show="(
                 (roulette.indexCurrentBall >= 1)
                 && (roulette.info.indexBallDisplayed > -1)
                 && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
-              )
-                ? '&#x25b6;'
-                : '&nbsp;'
               )"
               ng-click="roulette.viewBallHistory(+1)"
-            ></span>
-            <span ng-hide="(
-              (roulette.indexCurrentBall >= 1)
-              && (roulette.info.indexBallDisplayed > -1)
-              && (roulette.info.indexBallDisplayed < roulette.indexCurrentBall)
-            )">&nbsp;</span>
+            >&#x25b6;</span>
           </td>
           <td style="width: 35%" class="table-info__order">
             <button style="display:none" type="button" onclick="goFullScreen()">full</button>
