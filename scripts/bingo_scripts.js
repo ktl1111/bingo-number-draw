@@ -1,6 +1,7 @@
 function initialize()
 {
   document.getElementById('btnDraw').focus();
+  alert('a')
 } // initialize()
 
 
