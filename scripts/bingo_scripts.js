@@ -93,7 +93,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
             this.info.magic = this.info.magic.substr(0, this.info.magic.length - ', '.length);
 
           this.info.indexBallDisplayed = this.indexCurrentBall;
-          this.info.reading = 'Magic x ' + indexBall;
+          this.info.reading = indexBall + ' magic';
           this.info.order = '';
           this.info.indexFirstDraw = this.indexCurrentBall + 1;
           $window.focusOnDraw();
