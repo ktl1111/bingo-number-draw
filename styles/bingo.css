@@ -1,7 +1,7 @@
 .body-color
 {
   background-color: #f0f0f0 !important;
-  font-family: Verdana;
+  font-family: Tahoma;
   position: relative;
   /*
    * Disable text selection
@@ -17,12 +17,48 @@
 }
 
 /* Responsive Web Design Breakpoints for Height */
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) 
+
+@media only screen and (orientation:portrait)
 {
   .body-color 
   {
-    background-color: red !important;
+    background-color: lightyellow !important;
+  }
+  .table-balls__ball
+  {
+    width: 100%;
+  }
+  .box-info__reading
+  {
+    font-size: 1.5rem;
+  }
+  .table-info__magic   { width: 18% !important; 
+    font-size: 1.25rem;
+  }
+  .table-info__rewind  { width: 11% !important; }
+  .table-info__reading { width: 46% !important; }
+  .table-info__forward { width: 11% !important; }
+  .table-info__order   { width: 18% !important;
+    font-size: 0.8rem;
+  }
+
+    .button-magic,
+    .button-draw,
+    .button-reset
+    {
+      font-size: 1.0rem;
+      padding: 0.3rem 0.8rem;
+    }
+}
+
+
+/* ok! */
+/* Extra small devices (phones, 600px and down), landscape */
+@media only screen and (max-width: 600px) and (orientation:landscape)
+{
+  .body-color 
+  {
+    background-color: #FFCCCC !important;
   }
   .table-balls__ball
   {
@@ -30,13 +66,30 @@
   }
   .box-info__reading
   {
-    font-size: 1.5rem;
+    font-size: 2.25rem;
   }
+  .table-info__magic   { width: 27% !important; 
+    font-size: 1.25rem;
+  }
+  .table-info__rewind  { width:  6% !important; }
+  .table-info__reading { width: 34% !important; }
+  .table-info__forward { width:  6% !important; }
+  .table-info__order   { width: 27% !important;
+    font-size: 1.1rem;
+  }
+
+    .button-magic,
+    .button-draw,
+    .button-reset
+    {
+      font-size: 1.25rem;
+      padding: 0.3rem 2.5rem;
+    }
 } 
 
-/* try this */
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 768px) 
+/* ok! */
+/* Small devices (portrait tablets and large phones, 600px and up), landscape */
+@media only screen and (min-width: 600px) and (max-width: 768px) and (orientation: landscape)
 {
   .body-color 
   {
@@ -44,12 +97,33 @@
   }
   .table-balls__ball
   {
-    width: 70%;
+    width: 78%;
   }
+  .box-info__reading
+  {
+    font-size: 3rem;
+  }
+  .table-info__magic   { width: 27% !important; 
+    font-size: 1.5rem;
+  }
+  .table-info__rewind  { width:  5% !important; }
+  .table-info__reading { width: 36% !important; }
+  .table-info__forward { width:  5% !important; }
+  .table-info__order   { width: 27% !important; 
+    font-size: 1.4rem;
+  }
+
+    .button-magic,
+    .button-draw,
+    .button-reset
+    {
+      font-size: 1.25rem;
+      padding: 0.5rem 3rem;
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 1023px)
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape)
 {
   .body-color
   {
@@ -57,8 +131,23 @@
   }
   .table-balls__ball
   {
-    width: 70%;
+    width: 80%;
   }
+  .box-info__reading
+  {
+    font-size: 2.5rem;
+  }
+
+  .table-info__magic { font-size: 2rem;   }
+  .table-info__order { font-size: 1.4rem; }
+
+    .button-magic,
+    .button-draw,
+    .button-reset
+    {
+      font-size: 1.25rem;
+      padding: 0.2rem 3rem;
+    }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -68,10 +157,24 @@
 /* @media only screen and (min-width: 1200px) { } */
 
 
-/* Mobiles on Landscape: for Responsive web design */
+/* Mobiles on landscape: for Responsive web design */
 /* @media only screen and (min-width: 1023px) */
-@media only screen and (min-width: 1023px)
+@media only screen and (min-width: 1023px) and (orientation:landscape)
 {
+  .box-info__reading
+  {
+    font-size: 3rem;
+  }
+
+  .table-info__magic { font-size: 2rem;   }
+
+    .button-magic,
+    .button-draw,
+    .button-reset
+    {
+      font-size: 1.25rem;
+      padding: 0.5rem 3rem;
+    }
 }
 
 
@@ -127,7 +230,6 @@ table
   {
     text-align: center;
     color: deeppink;
-    font-size: 2rem;
     font-weight: bold;
   }
 
@@ -168,26 +270,8 @@ table
       text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: bold;
-      font-size: 3rem;
       padding: 0.5rem;
     }
-    /* Responsive Web Design Breakpoints for Height */
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) 
-    {
-      .body-color 
-      {
-        background-color: red !important;
-      }
-      .table-balls__ball
-      {
-        width: 95%;
-      }
-      .box-info__reading
-      {
-        font-size: 1.5rem;
-      }
-    } 
 
       .box-info__reading--magic
       {
@@ -223,7 +307,6 @@ table
   }
   .table-info__order
   {
-    font-size: 1.4rem;
     color: darkgray;
     padding-right: 1.25rem;
   }
@@ -252,9 +335,7 @@ table
     .button-draw,
     .button-reset
     {
-      font-size: 1.25rem;
       font-weight: bold;
-      padding: 0.5rem 3rem;
       border-radius: 6px;
       color: black;
       cursor: pointer;
