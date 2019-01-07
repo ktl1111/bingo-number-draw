@@ -30,15 +30,15 @@
   }
   .box-info__reading
   {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
-  .table-info__magic   { width: 27% !important; 
-    font-size: 0.8rem;
+  .table-info__magic   { width: 25% !important; 
+    font-size: 1.1rem;
   }
-  .table-info__rewind  { width:  6% !important; }
+  .table-info__rewind  { width:  8% !important; }
   .table-info__reading { width: 34% !important; }
-  .table-info__forward { width:  6% !important; }
-  .table-info__order   { width: 27% !important;
+  .table-info__forward { width:  8% !important; }
+  .table-info__order   { width: 25% !important;
     font-size: 0.8rem;
   }
 
