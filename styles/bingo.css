@@ -18,6 +18,7 @@
 
 /* Responsive Web Design Breakpoints for Height */
 
+/* ok! */
 @media only screen and (orientation:portrait)
 {
   .body-color 
@@ -41,7 +42,6 @@
   .table-info__order   { width: 25% !important;
     font-size: 0.8rem;
   }
-
     .button-magic,
     .button-draw,
     .button-reset
@@ -123,6 +123,7 @@
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
+/* ok! */
 @media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape)
 {
   .body-color
@@ -138,7 +139,7 @@
     font-size: 2.5rem;
   }
 
-  .table-info__magic { font-size: 2rem;   }
+  .table-info__magic { font-size: 1.75rem;   }
   .table-info__order { font-size: 1.4rem; }
 
     .button-magic,
