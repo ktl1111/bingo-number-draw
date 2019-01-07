@@ -34,7 +34,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     INFO:  3
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
-  $scope.CHOICES_MAGIC_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  $scope.CHOICES_MAGIC_NUMBERS = [9, 8, 7, 6, 5, 4, 3, 2, 1];
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
   $scope.LABEL_BINGO = 'BINGO!';
 
@@ -214,8 +214,8 @@ app.controller('controllerMain', function($scope, $sce, $window) {
           // Add to current index of ball ordering
           this.ordering.splice(this.indexCurrentBall, 0, j);
         } // for all balls ending in magic number j
-        this.displayBallInfo(numberMagic, $scope.ACTIONS.MAGIC);
       } // repeat numberMagic times with i
+      this.displayBallInfo(numberMagic, $scope.ACTIONS.MAGIC);
     } // drawMagic()
   };
 
