@@ -1,7 +1,7 @@
-function initialize()
+function focusOnDraw()
 {
   document.getElementById('btnDraw').focus();
-} // initialize()
+} // focusOnDraw()
 
 
 function goFullScreen()
@@ -25,7 +25,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
   // Constants
   $scope.GRID_ELEMENTS = {
     LETTERS: ['B', 'I', 'N', 'G', 'O'],
-    NUMBERS: Array.apply(null, Array(15)).map(function(number, index) { return index; })
+    NUMBERS: Array.apply(null, Array(15)).map(function(number, index) { return index; }),
   };
   $scope.ACTIONS = {
     RESET: 0,
@@ -34,6 +34,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     INFO:  3
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
+  $scope.CHOICES_MAGIC_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
   $scope.LABEL_BINGO = 'BINGO!';
 
@@ -65,7 +66,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       order:              '',      
       reading:            $scope.LABEL_BINGO,
       indexBallDisplayed: -1,
-      isMagicDone:        false
+      indexFirstDraw:     -1
     },
 
     // Methods
@@ -92,14 +93,16 @@ app.controller('controllerMain', function($scope, $sce, $window) {
             this.info.magic = this.info.magic.substr(0, this.info.magic.length - ', '.length);
 
           this.info.indexBallDisplayed = this.indexCurrentBall;
-          this.info.reading = this.orderingMagicNumbers[this.indexCurrentMagicNumber];
+          this.info.reading = 'Magic x ' + indexBall;
           this.info.order = '';
+          this.info.indexFirstDraw = this.indexCurrentBall + 1;
+          $window.focusOnDraw();
           break;
 
         case $scope.ACTIONS.DRAW:
-          // Set isMagicDone the first time "Draw" is pressed
-          if (!this.info.isMagicDone)
-            this.info.isMagicDone = true;
+          // Set indexFirstDraw the first time "Draw" is pressed
+          if (this.info.indexFirstDraw == -1)
+            this.info.indexFirstDraw = this.indexCurrentBall;
           this.info.indexBallDisplayed = this.indexCurrentBall;
           this.info.reading = this.balls[indexBall].reading;
           this.info.order = 'Ball ' + (this.indexCurrentBall + 1).toString();
@@ -108,12 +111,15 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         case $scope.ACTIONS.INFO:
           this.info.indexBallDisplayed = this.ordering.indexOf(indexBall);
           this.info.reading = this.balls[indexBall].reading;
-          this.info.order = ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
-            ? ((this.balls[indexBall].isDrawn)
-              ? 'Ball ' + (this.info.indexBallDisplayed + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
-              : 'Not yet drawn'
+          this.info.order = ((this.info.indexBallDisplayed >= this.info.indexFirstDraw)
+            ? ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
+              ? ((this.balls[indexBall].isDrawn)
+                ? 'Ball ' + (this.info.indexBallDisplayed + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
+                : 'Not yet drawn'
+              )
+              : 'Last Ball'
             )
-            : 'Last Ball'
+            : 'Magic (' + ((indexBall + 1) % 10) + ')'
           );
           break;
 
@@ -153,9 +159,9 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         this.info.order = '';
         this.info.reading = $scope.LABEL_BINGO;
         this.info.indexBallDisplayed = -1;
-        this.info.isMagicDone = false;
+        this.info.indexFirstDraw = -1;
         this.displayBallInfo(this.ordering[this.indexCurrentBall], $scope.ACTIONS.RESET);
-        $window.initialize();
+        $window.focusOnDraw();
       } // if confirm()
     }, // reset()
 
@@ -186,26 +192,30 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       this.displayBallInfo(this.ordering[this.indexCurrentBall], $scope.ACTIONS.DRAW);
     }, // drawBall()
 
-    drawMagic: function() {
-      this.indexCurrentMagicNumber += 1;
-      this.mix(this.orderingMagicNumbers, this.indexCurrentMagicNumber, $scope.NUMBER_MAGIC_NUMBERS);
-      // Mark magic number as drawn
-      this.magicNumbers[this.orderingMagicNumbers[this.indexCurrentMagicNumber]] = true;
-      // Go through all balls ending in magic number
-      for (var i = this.orderingMagicNumbers[this.indexCurrentMagicNumber] - 1, iLen = $scope.NUMBER_BALLS; i < iLen; i += 10)
+    drawMagic: function(numberMagic) {
+      // Repeat numberMagic times
+      for (var i = numberMagic; i > 0; i--)
       {
-        // Skip to 10 if magic number is 0
-        if (i == -1) continue;
-        // Update current index of drawn
-        this.indexCurrentBall += 1;
-        // Mark ball as magic and drawn
-        this.balls[i].isDrawn = true;
-        // Delete from ball ordering
-        this.ordering.splice(this.ordering.indexOf(i), 1);
-        // Add to current index of ball ordering
-        this.ordering.splice(this.indexCurrentBall, 0, i);
-      } // for all balls ending in magic number i
-      this.displayBallInfo(-1, $scope.ACTIONS.MAGIC);
+        this.indexCurrentMagicNumber += 1;
+        this.mix(this.orderingMagicNumbers, this.indexCurrentMagicNumber, $scope.NUMBER_MAGIC_NUMBERS);
+        // Mark magic number as drawn
+        this.magicNumbers[this.orderingMagicNumbers[this.indexCurrentMagicNumber]] = true;
+        // Go through all balls ending in magic number
+        for (var j = this.orderingMagicNumbers[this.indexCurrentMagicNumber] - 1, jLen = $scope.NUMBER_BALLS; j < jLen; j += 10)
+        {
+          // Skip to 10 if magic number is 0
+          if (j == -1) continue;
+          // Update current index of drawn
+          this.indexCurrentBall += 1;
+          // Mark ball as magic and drawn
+          this.balls[j].isDrawn = true;
+          // Delete from ball ordering
+          this.ordering.splice(this.ordering.indexOf(j), 1);
+          // Add to current index of ball ordering
+          this.ordering.splice(this.indexCurrentBall, 0, j);
+        } // for all balls ending in magic number j
+        this.displayBallInfo(numberMagic, $scope.ACTIONS.MAGIC);
+      } // repeat numberMagic times with i
     } // drawMagic()
   };
 

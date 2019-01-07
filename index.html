@@ -7,7 +7,7 @@
     <title>BINGO Web!</title>
   </head>
   <body ng-app="bingo_web" ng-controller="controllerMain" 
-    class="body-color" onload="initialize()">
+    class="body-color" onload="focusOnDraw()">
 
     <div id="mainContainer" class="super-center">
 
@@ -73,66 +73,17 @@
       <!-- Buttons -->
       <table>
         <tr>
-          <td style="width: 25%" class="table-buttons__magic">
+          <td style="width: 40%" class="table-buttons__magic">
             <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
+              ng-repeat="magic in CHOICES_MAGIC_NUMBERS"
+              ng-click="roulette.drawMagic(magic)"
               ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              1 
-            </button>
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              2 
-            </button>
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              3 
-            </button>
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              4 
-            </button>
-            <br />
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              5 
-            </button>
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              6 
-            </button>
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              7 
-            </button>
-            <button type="button" class="button-magic"
-              ng-click="roulette.drawMagic()"
-              ng-style="{visibility: (
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
-              ) ? 'hidden' : 'visible' }">
-              8
+              (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.indexFirstDraw > -1)
+              ) ? 'hidden' : 'visible' }"
+              ng-bind="magic">
             </button>
           </td>
-          <td style="width: 50%" class="table-buttons__draw">
+          <td style="width: 20%" class="table-buttons__draw">
             <button type="button" class="button-draw"
               id="btnDraw"
               ng-click="roulette.drawBall()"
@@ -140,7 +91,7 @@
               draw
             </button>
           </td>        
-          <td style="width: 25%" class="table-buttons__reset">
+          <td style="width: 40%" class="table-buttons__reset">
             <button type="button" class="button-reset"
               ng-click="roulette.reset()"
               ng-hide="(roulette.indexCurrentBall < 0)">
