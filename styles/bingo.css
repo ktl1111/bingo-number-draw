@@ -17,22 +17,11 @@
 }
 
 /* Responsive Web Design Breakpoints for Height */
-
-/* ok! */
 @media only screen and (orientation:portrait)
 {
-  .body-color 
-  {
-    background-color: lightyellow !important;
-  }
-  .table-balls__ball
-  {
-    width: 100%;
-  }
-  .box-info__reading
-  {
-    font-size: 1.5rem;
-  }
+  /* .body-color { background-color: lightyellow !important; } */
+  .table-balls__ball { width: 100%; }
+  .box-info__reading { font-size: 1.5rem; }
   .table-info__magic   { width: 25% !important; 
     font-size: 1.1rem;
   }
@@ -52,22 +41,12 @@
 }
 
 
-/* ok! */
 /* Extra small devices (phones, 600px and down), landscape */
 @media only screen and (max-width: 600px) and (orientation:landscape)
 {
-  .body-color 
-  {
-    background-color: #FFCCCC !important;
-  }
-  .table-balls__ball
-  {
-    width: 95%;
-  }
-  .box-info__reading
-  {
-    font-size: 2.25rem;
-  }
+  /* .body-color { background-color: #FFCCCC !important; } */
+  .table-balls__ball { width: 95%; }
+  .box-info__reading { font-size: 2.25rem; }
   .table-info__magic   { width: 27% !important; 
     font-size: 1.25rem;
   }
@@ -77,7 +56,6 @@
   .table-info__order   { width: 27% !important;
     font-size: 1.1rem;
   }
-
     .button-magic,
     .button-draw,
     .button-reset
@@ -91,18 +69,9 @@
 /* Small devices (portrait tablets and large phones, 600px and up), landscape */
 @media only screen and (min-width: 600px) and (max-width: 768px) and (orientation: landscape)
 {
-  .body-color 
-  {
-    background-color: blue !important;
-  }
-  .table-balls__ball
-  {
-    width: 78%;
-  }
-  .box-info__reading
-  {
-    font-size: 3rem;
-  }
+  /* .body-color { background-color: blue !important; } */
+  .table-balls__ball { width: 78%; }
+  .box-info__reading { font-size: 3rem; }
   .table-info__magic   { width: 27% !important; 
     font-size: 1.5rem;
   }
@@ -112,7 +81,6 @@
   .table-info__order   { width: 27% !important; 
     font-size: 1.4rem;
   }
-
     .button-magic,
     .button-draw,
     .button-reset
@@ -123,25 +91,15 @@
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
+/* Large devices (laptops/desktops, 992px and up) */
 /* ok! */
 @media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape)
 {
-  .body-color
-  {
-    background-color: black !important;
-  }
-  .table-balls__ball
-  {
-    width: 80%;
-  }
-  .box-info__reading
-  {
-    font-size: 2.5rem;
-  }
-
-  .table-info__magic { font-size: 1.75rem;   }
+  /* .body-color { background-color: black !important; } */
+  .table-balls__ball { width: 80%; }
+  .box-info__reading { font-size: 2.5rem; }
+  .table-info__magic { font-size: 1.75rem; }
   .table-info__order { font-size: 1.4rem; }
-
     .button-magic,
     .button-draw,
     .button-reset
@@ -151,24 +109,13 @@
     }
 } 
 
-/* Large devices (laptops/desktops, 992px and up) */
-/* @media only screen and (min-width: 992px) { } */
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-/* @media only screen and (min-width: 1200px) { } */
-
-
 /* Mobiles on landscape: for Responsive web design */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
 /* @media only screen and (min-width: 1023px) */
 @media only screen and (min-width: 1023px) and (orientation:landscape)
 {
-  .box-info__reading
-  {
-    font-size: 3rem;
-  }
-
-  .table-info__magic { font-size: 2rem;   }
-
+  .box-info__reading { font-size: 3rem; }
+  .table-info__magic { font-size: 2rem; }
     .button-magic,
     .button-draw,
     .button-reset
