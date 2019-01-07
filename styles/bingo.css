@@ -36,9 +36,10 @@
 
 /* try this */
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) 
+@media only screen and (min-width: 600px) and (max-width: 768px) 
 {
-  .body-color {
+  .body-color 
+  {
     background-color: blue !important;
   }
   .table-balls__ball
@@ -48,9 +49,10 @@
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) 
+@media only screen and (min-width: 768px) and (max-width: 1023px)
 {
-  .body-color {
+  .body-color
+  {
     background-color: black !important;
   }
   .table-balls__ball
