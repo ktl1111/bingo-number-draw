@@ -61,7 +61,7 @@
         <tbody>
           <tr ng-repeat="row in GRID_ELEMENTS.LETTERS">
             <td ng-repeat="col in GRID_ELEMENTS.NUMBERS"
-              ng-class="((roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col)) ? 'ball__drawn' : 'ball__not-drawn')">
+              ng-class="(((roulette.info.action != ACTIONS.MAGIC) && (roulette.ordering[roulette.indexCurrentBall] == (($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col))) ? 'ball__drawn' : 'ball__not-drawn')">
               <img class="table-balls__ball"
                 ng-src="images/{{ +roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].isDrawn }}_{{ roulette.balls[($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col].number }}.png"
                 ng-click="roulette.displayBallInfo(($parent.$index * GRID_ELEMENTS.NUMBERS.length) + col, ACTIONS.INFO)"></img>
@@ -76,11 +76,60 @@
           <td style="width: 25%" class="table-buttons__magic">
             <button type="button" class="button-magic"
               ng-click="roulette.drawMagic()"
-              ng-hide="(
-                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1))
-                || (roulette.info.isMagicDone)
-              )">
-              magic 
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              1 
+            </button>
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              2 
+            </button>
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              3 
+            </button>
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              4 
+            </button>
+            <br />
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              5 
+            </button>
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              6 
+            </button>
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              7 
+            </button>
+            <button type="button" class="button-magic"
+              ng-click="roulette.drawMagic()"
+              ng-style="{visibility: (
+                (roulette.indexCurrentMagicNumber >= (NUMBER_MAGIC_NUMBERS - 1)) || (roulette.info.isMagicDone)
+              ) ? 'hidden' : 'visible' }">
+              8
             </button>
           </td>
           <td style="width: 50%" class="table-buttons__draw">

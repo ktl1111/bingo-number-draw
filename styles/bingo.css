@@ -31,13 +31,9 @@
   .table-info__order   { width: 25% !important;
     font-size: 0.8rem;
   }
-    .button-magic,
-    .button-draw,
-    .button-reset
-    {
-      font-size: 1.0rem;
-      padding: 0.3rem 0.8rem;
-    }
+    .button-magic, .button-draw, .button-reset { font-size: 1.0rem; }
+    .button-draw, .button-reset { padding: 0.3rem 0.8rem; }
+    .button-magic               { padding: 0.15rem 0.27rem; }
 }
 
 
@@ -56,13 +52,9 @@
   .table-info__order   { width: 27% !important;
     font-size: 1.1rem;
   }
-    .button-magic,
-    .button-draw,
-    .button-reset
-    {
-      font-size: 1.25rem;
-      padding: 0.3rem 2.5rem;
-    }
+    .button-magic, .button-draw, .button-reset { font-size: 1.25rem; }
+    .button-draw, .button-reset { padding: 0.3rem 2.5rem; }
+    .button-magic               { padding: 0.15rem 0.83rem; }
 } 
 
 /* ok! */
@@ -81,13 +73,9 @@
   .table-info__order   { width: 27% !important; 
     font-size: 1.4rem;
   }
-    .button-magic,
-    .button-draw,
-    .button-reset
-    {
-      font-size: 1.25rem;
-      padding: 0.5rem 3rem;
-    }
+    .button-magic, .button-draw, .button-reset { font-size: 1.25rem; }
+    .button-draw, .button-reset { padding: 0.5rem 3rem; }
+    .button-magic               { padding: 0.25rem 1rem; }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -100,13 +88,9 @@
   .box-info__reading { font-size: 2.5rem; }
   .table-info__magic { font-size: 1.75rem; }
   .table-info__order { font-size: 1.4rem; }
-    .button-magic,
-    .button-draw,
-    .button-reset
-    {
-      font-size: 1.25rem;
-      padding: 0.2rem 3rem;
-    }
+    .button-magic, .button-draw, .button-reset { font-size: 1.25rem; }
+    .button-draw, .button-reset { padding: 0.2rem 3rem; }
+    .button-magic               { padding: 0.1rem 1rem; }
 } 
 
 /* Mobiles on landscape: for Responsive web design */
@@ -116,13 +100,10 @@
 {
   .box-info__reading { font-size: 3rem; }
   .table-info__magic { font-size: 2rem; }
-    .button-magic,
-    .button-draw,
-    .button-reset
-    {
-      font-size: 1.25rem;
-      padding: 0.5rem 3rem;
-    }
+  .table-info__order { font-size: 1.8rem; }
+    .button-magic, .button-draw, .button-reset { font-size: 1.75rem; }
+    .button-draw, .button-reset { padding: 0.5rem 3rem; }
+    .button-magic               { padding: 0.25rem 1rem; }
 }
 
 
@@ -279,21 +260,36 @@ table
       }
     }
 
+    .button-magic { background-color: #ffc0ff; }
+    .button-draw  { background-color: palegreen; }
+
     .button-magic,
     .button-draw,
     .button-reset
     {
       font-weight: bold;
       border-radius: 6px;
-      color: black;
       cursor: pointer;
       outline: none;
+    }
+    .button-magic:hover,
+    .button-draw:hover,
+    .button-reset:hover
+    {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     }
     button:focus
     {
       background-color: darkslategray;
       color: gainsboro;
     }
+
+    .table-buttons__magic-decrease,
+    .table-buttons__magic-increase
+    {
+      cursor: pointer;
+    }
+
     /*
     .button-magic
     {
