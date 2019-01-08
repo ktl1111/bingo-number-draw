@@ -34,6 +34,11 @@
     .button-magic, .button-draw, .button-reset { font-size: 1.0rem; }
     .button-draw, .button-reset { padding: 0.3rem 0.8rem; }
     .button-magic               { padding: 0.15rem 0.27rem; }
+    .button-donate
+    {
+      font-size: 1.0rem;
+      padding-right: 0;
+    }
 }
 
 
@@ -55,9 +60,13 @@
     .button-magic, .button-draw, .button-reset { font-size: 1.25rem; }
     .button-draw, .button-reset { padding: 0.3rem 2.5rem; }
     .button-magic               { padding: 0.15rem 0.83rem; }
+    .button-donate
+    {
+      font-size: 1.5rem;
+      padding-right: 0;
+    }
 } 
 
-/* ok! */
 /* Small devices (portrait tablets and large phones, 600px and up), landscape */
 @media only screen and (min-width: 600px) and (max-width: 768px) and (orientation: landscape)
 {
@@ -76,11 +85,15 @@
     .button-magic, .button-draw, .button-reset { font-size: 1.25rem; }
     .button-draw, .button-reset { padding: 0.5rem 3rem; }
     .button-magic               { padding: 0.25rem 1rem; }
+    .button-donate
+    {
+      font-size: 2.0rem;
+      padding-right: 0;
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 /* Large devices (laptops/desktops, 992px and up) */
-/* ok! */
 @media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation:landscape)
 {
   /* .body-color { background-color: black !important; } */
@@ -91,6 +104,11 @@
     .button-magic, .button-draw, .button-reset { font-size: 1.25rem; }
     .button-draw, .button-reset { padding: 0.2rem 3rem; }
     .button-magic               { padding: 0.1rem 1rem; }
+    .button-donate
+    {
+      font-size: 1.6rem;
+      padding-right: 0;
+    }
 } 
 
 /* Mobiles on landscape: for Responsive web design */
@@ -104,6 +122,11 @@
     .button-magic, .button-draw, .button-reset { font-size: 1.75rem; }
     .button-draw, .button-reset { padding: 0.5rem 3rem; }
     .button-magic               { padding: 0.25rem 1rem; }
+    .button-donate
+    {
+      font-size: 2.0rem;
+      padding-right: 1.25rem;
+    }
 }
 
 
@@ -287,8 +310,6 @@ table
     .button-donate
     {
       text-decoration: none;
-      font-size: 2.0rem;
-      padding-right: 1.25rem;
       color: salmon;
       transition: all linear 0.2s;
     }
