@@ -284,11 +284,24 @@ table
       color: gainsboro;
     }
 
-    .table-buttons__magic-decrease,
-    .table-buttons__magic-increase
+    .button-donate
     {
-      cursor: pointer;
+      text-decoration: none;
+      font-size: 2.0rem;
+      padding-right: 1.25rem;
+      color: salmon;
+      transition: all linear 0.2s;
     }
+    .button-donate:hover
+    {
+      color: red;
+    }
+    .button-donate:focus
+    {
+      color: darkred;
+    }
+
+
 
     /*
     .button-magic
