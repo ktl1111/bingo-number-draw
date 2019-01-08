@@ -34,7 +34,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     INFO:  3
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
-  $scope.CHOICES_MAGIC_NUMBERS = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+  $scope.CHOICES_MAGIC_NUMBERS = [5, 4, 3, 2, 1];
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
   $scope.LABEL_BINGO = 'BINGO!';
 
@@ -149,6 +149,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
         // Go through all magic numbers
         for (var i = 0; i <= this.indexCurrentMagicNumber; i++)
         {
+          // Reset drawn status
           this.magicNumbers[this.orderingMagicNumbers[i]] = false;
         } // for all magic numbers i
         this.indexCurrentBall = -1;
@@ -217,7 +218,8 @@ app.controller('controllerMain', function($scope, $sce, $window) {
       } // repeat numberMagic times with i
       this.displayBallInfo(numberMagic, $scope.ACTIONS.MAGIC);
     } // drawMagic()
-  };
+
+  }; // $scope.roulette
 
   // Pre-load filled ball images
   $scope.HTML_PRELOAD_IMAGES = Array.apply(null, Array($scope.NUMBER_BALLS))
