@@ -1,10 +1,10 @@
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/bingo.css">
     <script src="sources/angular.min.js"></script>
-    <title>BINGO Web!</title>
+    <title>承業生醫春酒賓果</title>
   </head>
   <body ng-app="bingo_web" ng-controller="controllerMain" 
     class="body-color" onload="focusOnDraw()">
@@ -88,20 +88,20 @@
               id="btnDraw"
               ng-click="roulette.drawBall()"
               ng-hide="(roulette.indexCurrentBall >= (NUMBER_BALLS - 1))">
-              draw
+              抽號
             </button>
           </td>        
           <td style="width: 40%" class="table-buttons__reset">
             <button type="button" class="button-reset"
               ng-click="roulette.reset()"
               ng-hide="(roulette.indexCurrentBall < 0)">
-              reset
+              全部重抽
             </button>
-            <a class="button-donate" target="_blank"
-              href="https://www.paypal.me/ilovebingoweb"
-              ng-hide="(roulette.indexCurrentBall >= 0)">
-              &#x2764;
-            </a>
+<!--            <a class="button-donate" target="_blank"-->
+<!--              href="https://www.paypal.me/ilovebingoweb"-->
+<!--              ng-hide="(roulette.indexCurrentBall >= 0)">-->
+<!--              &#x2764;-->
+<!--            </a>-->
           </td>        
         </tr>
       </table> <!-- buttons -->

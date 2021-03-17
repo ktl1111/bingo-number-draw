@@ -34,9 +34,9 @@ app.controller('controllerMain', function($scope, $sce, $window) {
     INFO:  3
   };
   $scope.NUMBER_MAGIC_NUMBERS = 10;
-  $scope.CHOICES_MAGIC_NUMBERS = [5, 4, 3, 2, 1];
+  $scope.CHOICES_MAGIC_NUMBERS = [2, 1];
   $scope.NUMBER_BALLS = $scope.GRID_ELEMENTS.LETTERS.length * $scope.GRID_ELEMENTS.NUMBERS.length;
-  $scope.LABEL_BINGO = 'BINGO!';
+  $scope.LABEL_BINGO = '春酒賓果!';
 
 
   $scope.roulette = {
@@ -53,7 +53,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
           paddedNumber = padLeft(number, 2);
         return {
           number:         paddedNumber,
-          reading:        letter + '-' + number,
+          reading:        number, // letter + '-' + number,
           isDrawn:        false
         };
       }),
@@ -93,7 +93,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
             this.info.magic = this.info.magic.substr(0, this.info.magic.length - ', '.length);
 
           this.info.indexBallDisplayed = this.indexCurrentBall;
-          this.info.reading = indexBall + ' magic';
+          this.info.reading = indexBall + ' 個福號'; //+ ' magic'
           this.info.order = '';
           this.info.indexFirstDraw = this.indexCurrentBall + 1;
           $window.focusOnDraw();
@@ -115,11 +115,11 @@ app.controller('controllerMain', function($scope, $sce, $window) {
             ? ((this.indexCurrentBall < ($scope.NUMBER_BALLS - 1))
               ? ((this.balls[indexBall].isDrawn)
                 ? 'Ball ' + (this.info.indexBallDisplayed + 1).toString() + ' of ' + (this.indexCurrentBall + 1).toString()
-                : 'Not yet drawn'
+                : '未抽中號碼'
               )
-              : 'Last Ball'
+              : '最後一球'
             )
-            : 'Magic (' + ((indexBall + 1) % 10) + ')'
+            : '福號 (' + ((indexBall + 1) % 10) + ')'
           );
           break;
 
@@ -138,7 +138,7 @@ app.controller('controllerMain', function($scope, $sce, $window) {
 
     reset: function() {
       // Confirm process
-      if (confirm('Really end this game?'))
+      if (confirm('確定離開遊戲?'))
       {
         // Go through all drawn balls
         for (var i = 0; i <= this.indexCurrentBall; i++)
